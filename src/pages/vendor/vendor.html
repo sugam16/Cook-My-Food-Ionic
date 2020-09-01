@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title class="title">{{"Vendors" | translate}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only color="royal" (click)="navcart()" class="header-btn-cart">
+                <ion-icon name="cart"></ion-icon>
+                <ion-badge class="carts" item-right color="danger">{{noOfItems}}</ion-badge>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let vendor of Vendors">
+        <ion-list>
+            <ion-item (click)="navigate()">
+                <ion-thumbnail item-left>
+                    <img src="{{vendor.thumb}}">
+                </ion-thumbnail>
+                <p class="heading">{{vendor.title}}</p>
+                
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
