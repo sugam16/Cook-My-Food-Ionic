@@ -17,6 +17,7 @@ export class HomePage {
   };
   Cart: any = [];
   noOfItems: any;
+  noOfOrders: any;
   uid;
 
   public ComingData: Array<any> = [];
@@ -64,6 +65,7 @@ export class HomePage {
   ionViewWillEnter() {
     this.Cart = JSON.parse(localStorage.getItem("Cart"));
     this.noOfItems = this.Cart != null ? this.Cart.length : null;
+    this.noOfOrders = JSON.parse(localStorage.getItem("ordercount"));
     this.uid = localStorage.getItem('uid');
     if (this.uid != null) {
       if (localStorage.getItem("playerId")) {
@@ -81,5 +83,16 @@ export class HomePage {
 
   navcart() {
     this.navCtrl.push("CartPage");
+  }
+
+  navorder() {
+    console.log("Orderlist");
+    this.navCtrl.push("OrderListPage");
+  }
+
+   isUser() {
+  console.log("logged in user ="+localStorage.getItem("role"));
+   // console.log(this.role);
+    return localStorage.getItem("role") != 'Admin';
   }
 }

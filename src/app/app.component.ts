@@ -65,9 +65,12 @@ export class MyApp {
     }
     this.useTranslateService();
     this.getNewsCount();
+    this.getOrderCount();
     this.getOfferCount();
     this.listenEvents();
   }
+
+
 
   private getNewsCount() {
     this.db
@@ -75,6 +78,18 @@ export class MyApp {
       .valueChanges()
       .subscribe(res => {
         this.noOfItemsInNews = res.length;
+      });
+  }
+
+  private getOrderCount() {
+
+    this.db
+      .list("/orders",ref => ref.orderByChild("userId").equalTo(this.uid))
+      .valueChanges()
+      .subscribe(res => {
+        console.log("App Component Order Count:" +res.length);
+        localStorage.setItem('ordercount',JSON.stringify(res.length));
+        
       });
   }
 

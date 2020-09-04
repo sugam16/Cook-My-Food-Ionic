@@ -65,7 +65,7 @@ export class CheckoutPage {
   stripe_card: any = {};
 
   public paymentTypes: any = [
-    {
+    /*{
       default: true,
       type: "Braintree",
       value: "Braintree",
@@ -76,8 +76,14 @@ export class CheckoutPage {
       type: "Stripe",
       value: "Stripe",
       logo: "assets/img/stripe.png"
+    },*/
+    {
+      default: false,
+      type: "PayByCard",
+      value: "PayByCard",
+      logo: "assets/img/stripe.png"
     },
-    { default: false, type: "COD", value: "COD", logo: "" }
+    { default: false, type: "InfosysSwipe", value: "InfosysSwipe", logo: "assets/img/infosys.png" }
   ];
 
   constructor(
@@ -154,8 +160,8 @@ export class CheckoutPage {
     this.order.userDetails = this.userDetails;
     this.order.userId = this.userId;
     this.order.createdAt = Date.now();
-    this.order.status = "pending";
-    this.order.paymentStatus = "pending";
+    this.order.status = "Pending";
+    this.order.paymentStatus = "Pending";
     delete this.order.shippingAddress.$key;
     this.order.statusReading = [
       {

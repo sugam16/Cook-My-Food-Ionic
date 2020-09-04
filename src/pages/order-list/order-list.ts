@@ -4,6 +4,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireList} from "@angular/fire/database";
 import { map } from "rxjs/operators";
 
+
 @IonicPage()
 @Component({
   selector: 'page-order-list',
@@ -18,17 +19,23 @@ export class OrderListPage {
 
   options = [
     {
-      status: "pending",
-      value: "pending"
+      status: "Pending",
+      value: "Pending"
     },
     {
-      status: "Delivered",
-      value: "Delivered"
+      status: "Cooking",
+      value: "Cooking"
     },
     {
-      status: "On the Way",
-      value: "On the Way"
+      status: "Ready",
+      value: "Ready"
+    },
+
+    {
+      status: "Cancelled",
+      value: "Cancelled"
     }
+
   ];
 
   constructor(
@@ -36,6 +43,7 @@ export class OrderListPage {
     public db: AngularFireDatabase,
     public navCtrl: NavController,
     public loadingCtrl: LoadingController
+    
   ) {
     this.currency = JSON.parse(localStorage.getItem('currency'));
     if (this.af.auth.currentUser) {
@@ -110,12 +118,24 @@ export class OrderListPage {
     this.navCtrl.push("OrdersPage", { orderId: orderId, orderKey: key });
   }
 
+  isUser() {
+  console.log("logged in user ="+localStorage.getItem("role"));
+   // console.log(this.role);
+    return localStorage.getItem("role") != 'Admin';
+  }
+
   changeStatus(val,key,id){
    
    console.log("Status Selected:" +val);
    console.log("Key Selected:" +key);
    console.log("Id Selected:" +id);
-
+    this.db.object("/orders/" + key).update({
+          status: val
+      });
+   
+   
   }
+
+
 
 }

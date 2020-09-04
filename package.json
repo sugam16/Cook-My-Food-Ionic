@@ -29,6 +29,7 @@
     "@ionic-native/google-plus": "3.12.1",
     "@ionic-native/onesignal": "3.12.1",
     "@ionic-native/paypal": "4.1.0",
+    "@ionic-native/sms": "^5.28.0",
     "@ionic-native/social-sharing": "3.12.1",
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
@@ -71,11 +72,13 @@
     "promise-polyfill": "^6.1.0",
     "rxjs": "^6.5.3",
     "rxjs-compat": "^6.5.3",
+    "twilio": "^3.49.1",
     "twitter-connect-plugin": "^0.6.0",
     "zone.js": "0.8.18"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^3.1.8",
+    "cordova-sms-plugin": "^1.0.0",
     "typescript": "^2.4.2"
   },
   "cordovaPlugins": [
@@ -125,7 +128,8 @@
       "cordova-plugin-stripe": {},
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-braintree": {},
-      "call-number": {}
+      "call-number": {},
+      "cordova-sms-plugin": {}
     }
   }
 }

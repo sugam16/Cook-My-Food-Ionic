@@ -10,6 +10,10 @@
         <ion-icon name="cart"></ion-icon>
         <ion-badge class="carts" item-right color="danger">{{noOfItems}}</ion-badge>
       </button>
+      <button *ngIf="isUser()" ion-button icon-only color="royal" (click)="navorder()" class="header-btn-cart">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge class="carts" item-right color="danger">{{noOfOrders}}</ion-badge>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

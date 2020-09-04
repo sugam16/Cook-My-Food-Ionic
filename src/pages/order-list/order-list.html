@@ -33,7 +33,11 @@
             </ion-row>
             <ion-row>
                 <ion-col col-6 no-padding>
-                    <ion-item>
+
+                    <p *ngIf="isUser()" class="status">Status: <strong>{{order.status}}</strong></p>
+                
+                    <ion-item *ngIf="!isUser()">
+                     <ion-label>Status</ion-label>   
                     <ion-select [(ngModel)]="order.status" (ionChange)="changeStatus(order.status,order.$key,order.orderId)">
                 <ion-option *ngFor="let option of options" value="{{option.value}}"> {{option.status}}
 

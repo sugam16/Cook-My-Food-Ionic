@@ -24,11 +24,7 @@
     </button>
 
     
-    <button *ngIf="isCart() && isUser()" menuClose class="menu-item" ion-item (click)="offer()">
-      <ion-icon name="pricetag" item-left></ion-icon>
-      {{'Offers'| translate}}
-      <ion-badge class="menu-badge">{{noOfItemsInOffer}}</ion-badge>
-    </button>
+    
     <button *ngIf="isUser()" menuClose class="menu-item" ion-item (click)="addToCart()">
       <ion-icon name="cart" item-left></ion-icon>
       {{'MyCart'| translate}}
@@ -62,22 +58,9 @@
       {{'Favourite'| translate}}
       <!-- <ion-badge class="menu-badge">{{noOfItemsInFevrt}}</ion-badge> -->
     </button>
-    <button *ngIf="isUser()" menuClose class="menu-item" ion-item (click)="contact()">
-      <ion-icon name="call" item-left></ion-icon>
-      {{'Contact'| translate}}
-    </button>
-    <button *ngIf="isUser()" menuClose class="menu-item" ion-item (click)="aboutUs()">
-      <ion-icon name="contacts" item-left></ion-icon>
-      {{'About Us'| translate}}
-    </button>
-    <button menuClose class="menu-item" ion-item *ngIf="isLoggedin() && isUser()" (click)="invite()">
-      <ion-icon name="contacts" item-left></ion-icon>
-      {{'Invite Friends' | translate}}
-    </button>
-    <button *ngIf="isLoggedin()" menuClose class="menu-item" ion-item (click)="chat()">
-      <ion-icon name="chatbubbles" item-left></ion-icon>
-      {{'Chat' | translate}}
-    </button>
+    
+    
+    
     <button *ngIf="isLoggedin() && isUser()" menuClose class="menu-item" ion-item (click)="settings()">
       <ion-icon name="settings" item-left></ion-icon>
       {{'Settings'| translate}}

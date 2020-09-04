@@ -57,9 +57,21 @@ export class AddressListPage {
     if (this.orderDetails.grandTotal == undefined) {
       this.navCtrl.push("CartPage");
     }
+	console.log("current user ====>" + this.af.auth.currentUser);
     if (this.af.auth.currentUser) {
-      this.db
+     /* this.db
         .list("/users/" + this.af.auth.currentUser.uid + "/address")
+        .snapshotChanges()
+        .pipe(
+          map(changes =>
+            changes.map(c => ({ $key: c.payload.key, ...c.payload.val() }))
+          )
+        ).subscribe((res: any) => {
+          this.addressList = res;
+        }) */
+
+        this.db
+        .list("/delivery-options/address")
         .snapshotChanges()
         .pipe(
           map(changes =>
@@ -77,7 +89,8 @@ export class AddressListPage {
       //     this.addressList.push(temp);
       //   });
       // });
-
+console.log("delivery-options ====>" + this.db
+        .list("delivery-options"));
       this.db
         .list("delivery-options")
         .valueChanges()
@@ -85,6 +98,8 @@ export class AddressListPage {
           this.pincodes = res;
           console.log("pincodes-" + JSON.stringify(res));
         });
+		console.log("loyalitys ====>" + JSON.stringify(this.db
+        .object("loyalitys")));
       this.db
         .object("loyalitys")
         .valueChanges()
@@ -137,15 +152,12 @@ export class AddressListPage {
       this.checked == true ? this.loyaltyPoints : 0;
     this.orderDetails.appliedLoyaltyPoints = this.checked;
     this.orderDetails.orderView = false;
+    this.pincodeMatched = true;
     if (this.orderDetails.shippingAddress && this.pincodeMatched) {
       this.navCtrl.push("CheckoutPage", {
         orderDetails: this.orderDetails
       });
-    } else if (this.pincodeMatched == false) {
-      this.showAlert("We can not deliver to your Area!");
-    } else {
-      this.showAlert("Select Your Address First!");
-    }
+    } 
   }
 
   showAlert(message) {

@@ -13,6 +13,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import "firebase/storage";
 import { DatePicker } from "@ionic-native/date-picker";
 
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -41,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CartService,
     DatePicker
+    
   ]
 })
 export class AppModule { }
